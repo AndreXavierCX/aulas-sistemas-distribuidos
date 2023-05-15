@@ -42,7 +42,7 @@ int main()
     }
 
 
-return 0;
+    return 0;
 }
 
 /* exemplo de código em C que realiza a multiplicação

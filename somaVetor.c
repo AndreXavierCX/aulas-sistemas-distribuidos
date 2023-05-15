@@ -1,6 +1,6 @@
 #include <omp.h>
 #include <stdio.h>
-#define posicoes 2048
+#define posicoes 10
 
 int main(int argc, char *argv[])
 {

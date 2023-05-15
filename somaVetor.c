@@ -12,14 +12,14 @@ int main(int argc, char *argv[])
 
 #pragma omp parallel
     {
-//#pragma omp for
+        // #pragma omp for
         for (i = 0; i < posicoes; i++)
         {
             a[i] = 2;
             b[i] = 3;
         }
 
-//#pragma omp for
+        // #pragma omp for
         for (i = 0; i < posicoes; i++)
         {
             c[i] = a[i] + b[i];
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 #pragma omp for ordered
         for (i = 0; i < 10; i++)
         {
-            //#pragma omp ordered
+#pragma omp ordered
             // printf("C[%d]=%f \n",i,c[i]);
             printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c[i]);
         }

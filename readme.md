@@ -7,7 +7,7 @@
     <br>
 -- executar
     <br>
-    ./<nomeArquivo>
+    ./<nomeArquivo.>
     <br>
     ex:
     <br>

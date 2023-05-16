@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
         {
             #pragma omp atomic
             c += a[i] * b[i];
-            printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c);
         }
 
         

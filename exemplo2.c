@@ -12,16 +12,16 @@ int main(int argc, char *argv[])
 
 #pragma omp parallel shared(aux)
     {
-        #pragma omp for
+#pragma omp for
         for (i = 0; i < posicoes; i++)
         {
-            #pragma omp atomic
+#pragma omp atomic
             c += a[i] * b[i];
+            printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c);
         }
 
-        
         aux = c;
-        
+
         // #pragma omp ordered
         //  printf("C[%d]=%f \n",i,c[i]);
         // printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c[i]);

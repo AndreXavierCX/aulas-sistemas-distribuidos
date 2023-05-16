@@ -10,35 +10,26 @@ int main(int argc, char *argv[])
 
     int i;
 
-#pragma omp parallel
+#pragma omp parallel shared(aux)
     {
-        // #pragma omp for
-        /*for (i = 0; i < posicoes; i++)
-        {
-            a[i] = 2;
-            b[i] = 3;
-        }*/
-
-        #pragma omp for 
+        #pragma omp for
         for (i = 0; i < posicoes; i++)
         {
+            #pragma omp atomic
             c += a[i] * b[i];
+            printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c);
         }
 
-        #pragma omp atomic
-        aux += c;
-        printf("Resultado %f \n", aux);
         
-        // #pragma omp for ordered
-        // for (i = 0; i < 10; i++)
-        //{
+        aux = c;
+        
         // #pragma omp ordered
         //  printf("C[%d]=%f \n",i,c[i]);
         // printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c[i]);
         // }
     }
 
-    
+    printf("Resultado %f \n", aux);
 
     return 0;
 }

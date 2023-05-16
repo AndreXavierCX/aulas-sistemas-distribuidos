@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     int i;
 
-#pragma omp parallel shared(aux)
+#pragma omp parallel private(i) shared(aux, c)
     {
 #pragma omp for
         for (i = 0; i < posicoes; i++)

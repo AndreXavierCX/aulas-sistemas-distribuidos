@@ -1,14 +1,14 @@
 #include <omp.h>
 #include <stdio.h>
-#define posicoes 10
+#define posicoes 4
 
 int main(int argc, char *argv[])
 {
-    float a[posicoes] = {12, 15, 43, 43, 54, 21, 67, 13, 78, 34};
-    float b[posicoes] = {34, 35, 67, 86, 23, 54, 65, 76, 11, 14};
-    float c;
+    float a[posicoes] = {2, 4, 6, 8};
+    float b[posicoes] = {1, 2, 3, 4};
+    float c, aux;
 
-    int i, aux;
+    int i;
 
 #pragma omp parallel
     {
@@ -19,13 +19,16 @@ int main(int argc, char *argv[])
             b[i] = 3;
         }*/
 
-#pragma omp for
+        #pragma omp for 
         for (i = 0; i < posicoes; i++)
         {
             c += a[i] * b[i];
         }
 
-        aux +=c; 
+        #pragma omp atomic
+        aux += c;
+        printf("Resultado %f \n", aux);
+        
         // #pragma omp for ordered
         // for (i = 0; i < 10; i++)
         //{
@@ -34,5 +37,8 @@ int main(int argc, char *argv[])
         // printf("thread %d interação %d do loop valor C[%d]=%f \n", omp_get_thread_num(), i, i, c[i]);
         // }
     }
+
+    
+
     return 0;
 }

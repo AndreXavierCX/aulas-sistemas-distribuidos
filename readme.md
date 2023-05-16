@@ -16,6 +16,6 @@
     <br>
     export OMP_NUM_THREADS=<numerodeThreads.>
     <br>
-    ex:export OMP_NUM_THREADS=8
+    ex: export OMP_NUM_THREADS=8
     <br>
     <br>
